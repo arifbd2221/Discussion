@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "606722156444",
+    "firebase_url": "https://board-exam-24437.firebaseio.com",
+    "project_id": "board-exam-24437",
+    "storage_bucket": "board-exam-24437.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:606722156444:android:10f2c0e1945df26d",
+        "android_client_info": {
+          "package_name": "com.insoapps.boardexams"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "606722156444-5k179trhkaum6hch7e0n0eecmpp1is90.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3-oW6Shop3mRv3fDYtGsfjzME8XjYrDA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:606722156444:android:3c041259cce3c485",
+        "android_client_info": {
+          "package_name": "com.insoapps.discussion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "606722156444-5k179trhkaum6hch7e0n0eecmpp1is90.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3-oW6Shop3mRv3fDYtGsfjzME8XjYrDA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
