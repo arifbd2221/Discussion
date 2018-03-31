@@ -38,6 +38,7 @@ public class PostActivity extends AppCompatActivity implements View.OnClickListe
     private Post mPost;
     private EditText mCommentEditTextView;
     private Comment mComment;
+    private FirebaseRecyclerOptions<Comment> options;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,23 +60,38 @@ public class PostActivity extends AppCompatActivity implements View.OnClickListe
     private void initCommentSection() {
         RecyclerView commentRecyclerView = (RecyclerView) findViewById(R.id.comment_recyclerview);
         commentRecyclerView.setLayoutManager(new LinearLayoutManager(PostActivity.this));
-
-        FirebaseRecyclerAdapter<Comment, CommentHolder> commentAdapter = new FirebaseRecyclerAdapter<Comment, CommentHolder>(
-                Comment.class,
-                R.layout.row_comment,
-                CommentHolder.class,
-                FirebaseUtils.getCommentRef(mPost.getPostId())
-        ) {
+        
+        //here set the database location and reffer the exact place from where you want to pull the comments
+        //mUserDatabase is an example of the database reference which headed to the exact location where the comments are stored
+        //after that i limited the number of comments load to 10 from the bottom , you can omit this part  
+        Query firebaseSearchQuery = mUserDatabase.limitToLast(10)
+        options = new FirebaseRecyclerOptions.Builder<Comment>().setQuery(firebaseSearchQuery, Comment.class).build();
+        
+        FirebaseRecyclerAdapter<Comment, CommentHolder> commentAdapter = new FirebaseRecyclerAdapter<Comment, CommentHolder>(options){
+            
+            
             @NonNull
             @Override
             public CommentHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                return null;
+                View v=LayoutInflater.from(parent.getContext()).inflate(R.layout.row_comment,parent,flase);
+                return new CommentHolder(v);
             }
 
             @Override
             protected void onBindViewHolder(@NonNull CommentHolder holder, int position, @NonNull Comment model) {
 
             }
+            
+            
+            
+        };
+        /*FirebaseRecyclerAdapter<Comment, CommentHolder> commentAdapter = new FirebaseRecyclerAdapter<Comment, CommentHolder>(
+                Comment.class,
+                R.layout.row_comment,
+                CommentHolder.class,
+                FirebaseUtils.getCommentRef(mPost.getPostId())
+        ) {
+            
 
     /*        @Override
             protected void populateViewHolder(CommentHolder viewHolder, Comment model, int position) {
@@ -87,7 +103,7 @@ public class PostActivity extends AppCompatActivity implements View.OnClickListe
                         .load(model.getUser().getPhotoUrl())
                         .into(viewHolder.commentOwnerDisplay);
             }*/
-        };
+        };*/
 
         commentRecyclerView.setAdapter(commentAdapter);
     }
